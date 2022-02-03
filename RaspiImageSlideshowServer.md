@@ -6,6 +6,6 @@ permalink: /projects/RaspiSlideshowServer/
 <html>
 <body>
 <h1>Hello World</h1>
-<p>This is my raspi project</p>
+<p>This is my raspi project in my new branch</p>
 </body>
 </html>
