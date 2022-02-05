@@ -20,4 +20,19 @@ The instructions in this tutorial assume a fresh Install of Raspbian using [the 
 
     apt-get install feh
 
-2. Create a folder, where the to be displayed Images will be stored. Either use the desktop interface or create it from the [terminal](https://www.techwalla.com/articles/how-to-make-a-folder-in-ubuntu). 
+2. Create a folder, where the to be displayed Images will be stored. Either use the desktop interface or create it from the [terminal](https://www.techwalla.com/articles/how-to-make-a-folder-in-ubuntu). In this tutorial, the path to that directory will be called "yourImgDir".
+
+3. Add some Images to that folder, so the slideshow can be tested.
+
+4. Type the following command in the terminal, to test if feh works correctly:
+
+    feh \
+    --recursive \
+    --randomize \
+    --fullscreen \
+    --quiet \
+    --hide-pointer \
+    --slideshow-delay 6 \
+    yourPicDir
+
+The parameters can be adjusted and customized to your personal desires. More infos can be found in the [feh manual pages](https://linux.die.net/man/1/feh).
