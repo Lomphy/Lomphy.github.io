@@ -87,3 +87,9 @@ Add the following line to the bootom of the file:
 
 
 To test if everythin works, reboot your Raspberry Pi and it should automatically start the slideshow. To exit press Esc.
+
+---
+Source for this part of the tutorial: [Ben Hoey](https://bhoey.com/blog/photo-slideshows-using-raspberry-pi/) 
+
+---
+
