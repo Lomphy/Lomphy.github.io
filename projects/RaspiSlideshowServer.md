@@ -33,6 +33,57 @@ The instructions in this tutorial assume a fresh Install of Raspbian using [the 
     --quiet \
     --hide-pointer \
     --slideshow-delay 6 \
-    yourPicDir
+    yourImgDir
 
 The parameters can be adjusted and customized to your personal desires. More infos can be found in the [feh manual pages](https://linux.die.net/man/1/feh).
+
+To exit, press Esc.
+
+## Disabling Screen Blanking
+
+To disable the automatic screen blanking, that happens after a few minutes of inactivity, the lightdm.conf file needs to be modified. Access the file by typing the following command in the terminal:
+
+    nano /etc/lightdm/lightdm.conf
+
+Scroll down to the [Seat:*] section and add the following line:
+
+    xserver-command=X -s 0 dpms
+
+Save your changes by clicking Ctrl+X -> Y -> Enter.
+
+## Auto-Start Slideshow on Boot
+
+1. A shell-script file needs to be created, that gets executed when the Raspberry Pi boots up. Do that by entering the following command in the terminal:
+
+    nano /home/pi/slideshow.sh
+
+2. Type in the feh script we already used in the beginning, with an additional line at the beginning:
+
+    #!/bin/bash
+ 
+    feh \
+    --recursive \
+    --randomize \
+    --fullscreen \
+    --quiet \
+    --hide-pointer \
+    --slideshow-delay 6 \
+    yourImgDir
+
+3. Make the created shell-script executable by typing the following command in the terminal:
+
+    chmod +x slideshow.sh
+
+4. You can test the script by typing the following command in the terminal:
+
+    ./slideshow.sh
+
+5. To make the script start on boot-up, the LXDE autostart file needs to be edited:
+
+    nano /home/pi/.config/lxsession/LXDE-pi/autostart
+
+Add the following line to the bootom of the file:
+    @/home/pi/slideshow.sh
+
+
+To test if everythin works, reboot your Raspberry Pi and it should automatically start the slideshow. To exit press Esc.
