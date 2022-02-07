@@ -91,5 +91,44 @@ To test if everythin works, reboot your Raspberry Pi and it should automatically
 ---
 Source for this part of the tutorial: [Ben Hoey](https://bhoey.com/blog/photo-slideshows-using-raspberry-pi/) 
 
----
+--- 
 
+
+
+# Setting up Samba File Sharing
+
+1. Update your packages by running:
+
+    sudo apt-get update
+    sudo apt-get upgrade
+
+2. Install Samba:
+
+    sudo apt-get install samba samba-common-bin
+
+3. Create a folder on your Raspberry Pi that you want to have shared. This can either be on a mounted external hard-drive or on the Raspberry Pi itself. Create the folder by running the following command:
+
+    mkdir /home/pi/shared
+
+4. Modify the samba config file "smb.conf" to start sharing. Open it with
+
+    sudo nano /etc/samba/smb.conf
+
+5. Add the following lines to the bottom of the config file:
+
+    [pishare]
+    path = /home/pi/shared
+    writeable=Yes
+    create mask=0777
+    directory mask=0777
+    public=no
+
+"[pishare]" - This is the name of the share, that is seen by the person remotely connecting to the share. For this example, it will be //raspberry/pishare
+
+"path" - This is the path of the directory that will be shared. See step No. 3
+
+"writeable" - When set to yes, this will allow the folder to be writeable
+
+"create mask" & "directory mask" - This defines the maximum permissions for the files and folders. Setting it to 0777 allows users to read, write, and execute.
+
+"public" - This makes the pi require a valid user to grant access to the shared folders.
