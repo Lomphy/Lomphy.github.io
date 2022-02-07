@@ -132,3 +132,14 @@ Source for this part of the tutorial: [Ben Hoey](https://bhoey.com/blog/photo-sl
 "create mask" & "directory mask" - This defines the maximum permissions for the files and folders. Setting it to 0777 allows users to read, write, and execute.
 
 "public" - This makes the pi require a valid user to grant access to the shared folders.
+
+Save the file by clicking Ctrl+X -> Y -> Enter
+
+6. Set up a user for the Samba File Sharing. In this example, we will be creating a Samba user called "pi" with the password "raspberry":
+
+    sudo smbpasswd -a pi
+
+7. Restart the Samba File Sharing service to load the configuration changes:
+
+    sudo systemctl restart smbd
+
