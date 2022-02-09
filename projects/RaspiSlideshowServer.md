@@ -144,5 +144,3 @@ Save the file by clicking Ctrl+X -> Y -> Enter
     sudo systemctl restart smbd
 
 ## Connect to your Samba Server on Windows
-
-test
